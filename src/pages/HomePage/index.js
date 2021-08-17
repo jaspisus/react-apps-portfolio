@@ -4,7 +4,7 @@ function HomePage() {
 	return (
 		<>
 			<h1>Hello world</h1>
-			<a href="#todoapp">todoapp</a>
+			<a href="#budgetapp">Budget App</a>
 		</>
 	);
 }

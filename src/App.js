@@ -9,9 +9,9 @@ import BudgetApp from '../src/pages/BudgetApp';
 
 function App() {
 	return (
-		<HashRouter hashtype="slash">
+		<HashRouter hashtype="noslash">
 			<Route path="/" exact component={HomePage} />
-			<Route path="/todoapp" component={BudgetApp} />
+			<Route path="/budgetapp" component={BudgetApp} />
 		</HashRouter>
 	);
 }
