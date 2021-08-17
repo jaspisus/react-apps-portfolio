@@ -1,6 +1,6 @@
 import React from 'react';
 
-function List({ listType, header, list, onDelete }) {
+function Expenses({ listType, header, list, onDelete }) {
 	return (
 		<div className="box">
 			<h2>{header}</h2>
@@ -18,4 +18,4 @@ function List({ listType, header, list, onDelete }) {
 	);
 }
 
-export default List;
+export default Expenses;

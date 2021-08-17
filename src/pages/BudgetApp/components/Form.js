@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-import { Option } from './components';
+import { Option } from './';
 
 function Form({ addEntry }) {
 	const [transactionType, setTransactionType] = useState('income');

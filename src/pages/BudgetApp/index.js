@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 
 import './css/style.min.css';
 
-import List from './List';
-import Form from './Form';
-import Budget from './Budget';
+import { List, Form, Budget } from './Components';
 
 function BudgetApp() {
 	const [expenses, setExpenses] = useState([
@@ -42,7 +40,7 @@ function BudgetApp() {
 	]);
 
 	const addEntry = ({ transactionType, transactionName, transactionAmount, transactionCategory }) => {
-		if (transactionType == 'outcome')
+		if (transactionType === 'outcome')
 			setExpenses([
 				...expenses,
 				{
@@ -53,7 +51,7 @@ function BudgetApp() {
 					transactionCategory: transactionCategory,
 				},
 			]);
-		if (transactionType == 'income')
+		if (transactionType === 'income')
 			setIncomes([
 				...incomes,
 				{
@@ -94,10 +92,10 @@ function BudgetApp() {
 	};
 
 	const deleteEntry = (id, listType) => {
-		if (listType == 'incomes') {
+		if (listType === 'incomes') {
 			setIncomes(incomes.filter(elem => elem.id !== id));
 		}
-		if (listType == 'expenses') {
+		if (listType === 'expenses') {
 			setExpenses(expenses.filter(elem => elem.id !== id));
 		}
 	};
