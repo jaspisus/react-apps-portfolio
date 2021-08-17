@@ -1,0 +1,28 @@
+* {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#root {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	display: grid;
+	place-items: center;
+	flex-grow: 1;
+}
+
+h1 {
+	margin-bottom: 15px;
+}
+
+article {
+	border: 2px solid royalblue;
+	border-radius: 15px;
+	padding: 10px;
+}
