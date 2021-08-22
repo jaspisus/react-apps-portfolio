@@ -40,11 +40,11 @@ function BudgetApp() {
 	]);
 
 	useEffect(() => {
-		if (sessionStorage.getItem('expenses')) {
-			setExpenses(JSON.parse(sessionStorage.getItem('expenses')));
+		if (localStorage.getItem('expenses')) {
+			setExpenses(JSON.parse(localStorage.getItem('expenses')));
 		}
-		if (sessionStorage.getItem('incomes')) {
-			setIncomes(JSON.parse(sessionStorage.getItem('incomes')));
+		if (localStorage.getItem('incomes')) {
+			setIncomes(JSON.parse(localStorage.getItem('incomes')));
 		}
 	}, []);
 
@@ -73,14 +73,14 @@ function BudgetApp() {
 
 		if (transactionType === 'outcome') {
 			setExpenses(addToExpenses);
-			sessionStorage.setItem('expenses', JSON.stringify(addToExpenses));
+			localStorage.setItem('expenses', JSON.stringify(addToExpenses));
 		}
 		if (transactionType === 'income') {
 			setIncomes(addToIncomes);
-			sessionStorage.setItem('incomes', JSON.stringify(addToIncomes));
+			localStorage.setItem('incomes', JSON.stringify(addToIncomes));
 		}
 
-		// sessionStorage.clear();
+		// localStorage.clear();
 	};
 
 	const calculateBudget = () => {
@@ -113,11 +113,11 @@ function BudgetApp() {
 	const deleteEntry = (id, listType) => {
 		if (listType === 'incomes') {
 			setIncomes(incomes.filter(elem => elem.id !== id));
-			sessionStorage.setItem('incomes', JSON.stringify(incomes.filter(elem => elem.id !== id)));
+			localStorage.setItem('incomes', JSON.stringify(incomes.filter(elem => elem.id !== id)));
 		}
 		if (listType === 'expenses') {
 			setExpenses(expenses.filter(elem => elem.id !== id));
-			sessionStorage.setItem('expenses', JSON.stringify(expenses.filter(elem => elem.id !== id)));
+			localStorage.setItem('expenses', JSON.stringify(expenses.filter(elem => elem.id !== id)));
 		}
 	};
 

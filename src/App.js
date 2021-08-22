@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, HashRouter } from 'react-router-dom';
+import { Route, HashRouter, NavLink } from 'react-router-dom';
 
 import './css/index.min.css';
 
@@ -9,7 +9,17 @@ import BudgetApp from '../src/pages/BudgetApp';
 
 function App() {
 	return (
-		<HashRouter hashtype="noslash">
+		<HashRouter hashType={'noslash'}>
+			<nav>
+				<NavLink
+					to="/budgetapp"
+					activeStyle={{
+						fontWeight: 'bold',
+					}}
+				>
+					Budget App
+				</NavLink>
+			</nav>
 			<Route path="/" exact component={HomePage} />
 			<Route path="/budgetapp" component={BudgetApp} />
 		</HashRouter>

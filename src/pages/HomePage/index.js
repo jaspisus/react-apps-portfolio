@@ -1,12 +1,7 @@
 import React from 'react';
 
 function HomePage() {
-	return (
-		<>
-			<h1>Hello world</h1>
-			<a href="/#/budgetapp">Budget App</a>
-		</>
-	);
+	return <h1>Hello world</h1>;
 }
 
 export default HomePage;

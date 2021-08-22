@@ -63,7 +63,7 @@ function Form({ addEntry }) {
 			</fieldset>
 			<fieldset>
 				<legend>Kwota:</legend>
-				<input ref={transactionAmountInput} type="number" onChange={e => setTransactionAmount(e.target.value)} />
+				<input ref={transactionAmountInput} type="number" min="0" onChange={e => setTransactionAmount(e.target.value)} />
 			</fieldset>
 			<fieldset>
 				<legend>Kategoria:</legend>
