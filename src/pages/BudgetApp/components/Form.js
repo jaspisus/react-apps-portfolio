@@ -15,6 +15,19 @@ function Form({ addEntry }) {
 	const onSubmit = event => {
 		event.preventDefault();
 
+		if (transactionNameInput.current.value === '') {
+			alert('Podaj nazwę transakcji!');
+			return;
+		}
+		if (!transactionAmountInput.current.value) {
+			alert('Podaj kwotę transakcji!');
+			return;
+		}
+		if (transactionCategoryInput.current.value === '0') {
+			alert('Wybierz kategorię transakcji!');
+			return;
+		}
+
 		addEntry({
 			transactionType,
 			transactionName,
@@ -24,7 +37,11 @@ function Form({ addEntry }) {
 
 		transactionNameInput.current.value = '';
 		transactionAmountInput.current.value = '';
-		transactionCategoryInput.current.value = '';
+		transactionCategoryInput.current.value = '0';
+
+		setTransactionName('');
+		setTransactionAmount(0);
+		setTransactionCategory(null);
 	};
 
 	return (

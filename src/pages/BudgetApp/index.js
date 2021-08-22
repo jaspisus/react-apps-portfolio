@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import './css/style.min.css';
 
@@ -39,29 +39,48 @@ function BudgetApp() {
 		},
 	]);
 
+	useEffect(() => {
+		if (sessionStorage.getItem('expenses')) {
+			setExpenses(JSON.parse(sessionStorage.getItem('expenses')));
+		}
+		if (sessionStorage.getItem('incomes')) {
+			setIncomes(JSON.parse(sessionStorage.getItem('incomes')));
+		}
+	}, []);
+
 	const addEntry = ({ transactionType, transactionName, transactionAmount, transactionCategory }) => {
-		if (transactionType === 'outcome')
-			setExpenses([
-				...expenses,
-				{
-					id: Math.floor(Math.random() * 100000000 + 1),
-					transactionType: transactionType,
-					transactionName: transactionName,
-					transactionAmount: parseFloat(transactionAmount),
-					transactionCategory: transactionCategory,
-				},
-			]);
-		if (transactionType === 'income')
-			setIncomes([
-				...incomes,
-				{
-					id: Math.floor(Math.random() * 10000 + 1),
-					transactionType: transactionType,
-					transactionName: transactionName,
-					transactionAmount: parseFloat(transactionAmount),
-					transactionCategory: transactionCategory,
-				},
-			]);
+		const addToExpenses = [
+			...expenses,
+			{
+				id: Math.floor(Math.random() * 100000000 + 1),
+				transactionType: transactionType,
+				transactionName: transactionName,
+				transactionAmount: parseFloat(transactionAmount),
+				transactionCategory: transactionCategory,
+			},
+		];
+
+		const addToIncomes = [
+			...incomes,
+			{
+				id: Math.floor(Math.random() * 10000 + 1),
+				transactionType: transactionType,
+				transactionName: transactionName,
+				transactionAmount: parseFloat(transactionAmount),
+				transactionCategory: transactionCategory,
+			},
+		];
+
+		if (transactionType === 'outcome') {
+			setExpenses(addToExpenses);
+			sessionStorage.setItem('expenses', JSON.stringify(addToExpenses));
+		}
+		if (transactionType === 'income') {
+			setIncomes(addToIncomes);
+			sessionStorage.setItem('incomes', JSON.stringify(addToIncomes));
+		}
+
+		// sessionStorage.clear();
 	};
 
 	const calculateBudget = () => {
@@ -94,9 +113,11 @@ function BudgetApp() {
 	const deleteEntry = (id, listType) => {
 		if (listType === 'incomes') {
 			setIncomes(incomes.filter(elem => elem.id !== id));
+			sessionStorage.setItem('incomes', JSON.stringify(incomes.filter(elem => elem.id !== id)));
 		}
 		if (listType === 'expenses') {
 			setExpenses(expenses.filter(elem => elem.id !== id));
+			sessionStorage.setItem('expenses', JSON.stringify(expenses.filter(elem => elem.id !== id)));
 		}
 	};
 
