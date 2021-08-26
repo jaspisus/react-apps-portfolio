@@ -12,6 +12,15 @@ function App() {
 		<HashRouter hashType={'noslash'}>
 			<nav>
 				<NavLink
+					to="/"
+					activeStyle={{
+						fontWeight: 'bold',
+					}}
+				>
+					Home
+				</NavLink>
+				<span> | </span>
+				<NavLink
 					to="/budgetapp"
 					activeStyle={{
 						fontWeight: 'bold',
